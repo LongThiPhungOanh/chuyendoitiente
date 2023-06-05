@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    function chuyentien() {
+        var vn = document.getElementById("FC").value;
+        var us = document.getElementById("TC").value;
+        var am = document.getElementById("Amount").value;
+
+        if(vn == "VND" && us == "USD") {
+            am=am*23000;
+        }else if(vn == "USD" && us == "VND") {
+            am=am/23000;
+        }
+        else if (vn=="VND" && us=="VND"){
+            am=am*0
+        }
+        else if (vn == "USD" && us=="USD"){
+            am=am*0
+        }
+
+        document.getElementById("Result").innerText = "Result : " + am
+    }
+</script>
+<style>
+    th,td{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+</style>
+<body>
+<table>
+    <tr>
+      <th><span for="Amount">Amount</span></th>
+        <th>From Currency</th>
+        <th>To Currency</th>
+    </tr>
+    <tr>
+        <td><input type="text" id="Amount"></td>
+        <td>
+            <select style="padding-left: 10px" id="FC">
+                <option value="VND">VND</option>
+                <option value="USD">USD</option>
+            </select>
+        </td>
+        <td>
+            <select id="TC">
+                <option value="VND">VND</option>
+                <option value="USD">USD</option>
+            </select>
+        </td>
+        <td><button onclick="chuyentien()">covert</button></td>
+    </tr>
+</table>
+<br>
+<p id = "Result">Result : 0$</p>
+
+</body>
+</html>
